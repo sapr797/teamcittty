@@ -126,6 +126,7 @@ object Build2 : BuildType({
                 equals("teamcity.build.branch", "refs/heads/master")
             }
             goals = "clean deploy package"
+            localRepoScope = MavenBuildStep.RepositoryScope.MAVEN_DEFAULT
             coverageEngine = jacoco {
                 classLocations = "target/classes"
             }

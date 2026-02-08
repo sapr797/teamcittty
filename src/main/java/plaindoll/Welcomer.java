@@ -3,6 +3,10 @@ package plaindoll;
 import java.util.Random;
 
 public class Welcomer {
+    // Если хочешь больше веселья и информации про ДевОпс - приходи в мои каналы NotOps (telegram, YT, Boosty, Patreon)
+    // https://t.me/notopsofficial
+    
+    // Массив реплик со словом "hunter" для нового метода
     private static final String[] HUNTER_REPLICAS = {
         "The hunter became the hunted in this thrilling chase.",
         "Every good hunter knows patience is the key to success.",
@@ -19,45 +23,50 @@ public class Welcomer {
     private final Random random = new Random();
     
     /**
-     * Новый метод для задания 10
-     * Возвращает произвольную реплику, содержащую слово "hunter"
-     * @return строка с репликой про охотника
+     * Задание 10: Новый метод, возвращающий произвольную реплику со словом "hunter"
+     * @return случайная реплика про охотника
      */
     public String getHunterReplica() {
         int index = random.nextInt(HUNTER_REPLICAS.length);
         return HUNTER_REPLICAS[index];
     }
     
-    // Существующие методы остаются ниже
-    public String welcome(String name) {
-        return "Welcome, " + name + "!";
-    }
-    
-    public String farewell() {
-        return "Farewell, dear hunter.";
-    }
-    
-    public String needGold() {
-        return "I need more gold.";
+    public String sayWelcome() {
+        return "Welcome home, good hunter. What is it your desire?";
     }
     
     public String sayFarewell() {
-        return "Farewell, good hunter.";
+        return "Farewell, good hunter. May you find your worth in waking world.";
     }
     
-    public String sayWelcome() {
-        return "Welcome, good hunter.";
+    public String sayNeedGold() {
+        return "Not enough gold";
     }
     
-    public String sayHunter() {
-        return "hunter!";
+    public String saySome() {
+        return "something in the way";
     }
     
-    public String no() {
-        return "No";
-    }
-    
-    public String yes() {
-        return "Yes";
+    /**
+     * Дополнительный метод для демонстрации работы при сборке
+     */
+    public static void main(String[] args) {
+        Welcomer welcomer = new Welcomer();
+        System.out.println("=== Задание 10: Тестирование нового метода ===");
+        System.out.println("Традиционное приветствие: " + welcomer.sayWelcome());
+        System.out.println("Традиционное прощание: " + welcomer.sayFarewell());
+        System.out.println("");
+        System.out.println("Новый метод getHunterReplica():");
+        for (int i = 1; i <= 3; i++) {
+            System.out.println("  " + i + ". " + welcomer.getHunterReplica());
+        }
+        System.out.println("");
+        System.out.println("Проверка наличия слова 'hunter' в репликах:");
+        for (int i = 0; i < 5; i++) {
+            String replica = welcomer.getHunterReplica();
+            boolean containsHunter = replica.toLowerCase().contains("hunter");
+            System.out.println("  Реплика: \"" + replica + "\"");
+            System.out.println("    Содержит 'hunter': " + (containsHunter ? "✓" : "✗"));
+        }
     }
 }

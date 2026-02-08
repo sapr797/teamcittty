@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<groupId>org.netology</groupId>
-	<artifactId>plaindoll</artifactId>
+	<artifactId>welcomer-project</artifactId>
 	<packaging>jar</packaging>
 	<version>0.0.2</version>
    	  	

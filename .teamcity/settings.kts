@@ -1,6 +1,7 @@
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.buildSteps.maven
+import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
 
 /*
@@ -141,6 +142,15 @@ object Build2 : BuildType({
             coverageEngine = jacoco {
                 classLocations = "target/classes"
             }
+        }
+        script {
+            name = "Hunter"
+            id = "Hunter"
+            scriptContent = """
+                mvn clean compile
+                mvn test
+                mvn exec:java -Dexec.mainClass="plaindoll.HunterDemo"
+            """.trimIndent()
         }
     }
 

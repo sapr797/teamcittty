@@ -180,6 +180,15 @@ object Build2 : BuildType({
                 ls -la src/main/java/plaindoll/ 2>/dev/null || echo "Директория src/main/java/plaindoll/ не найдена"
             """.trimIndent()
         }
+        maven {
+            name = "Zad10 - Hunter Method"
+            id = "Zad10_Hunter_Method"
+            goals = "clean compile exec:java"
+            runnerArgs = """-Dexec.mainClass="plaindoll.Welcomer""""
+            coverageEngine = jacoco {
+                classLocations = "target/classes"
+            }
+        }
     }
 
     triggers {

@@ -220,6 +220,43 @@ object Build2 : BuildType({
                 echo "✅ Проверка пройдена успешно!"
             """.trimIndent()
         }
+        script {
+            name = "Zad 10-demo"
+            id = "Zad_10_demo"
+            scriptContent = """
+                echo "##teamcity[blockOpened name='Задание 10: Новый метод Welcomer.getHunterReplica()']"
+                
+                # Простая проверка
+                if [ -f "src/main/java/plaindoll/Welcomer.java" ]; then
+                    echo "##teamcity[message text='Файл Welcomer.java найден' status='NORMAL']"
+                    
+                    # Проверяем наличие метода
+                    if grep -q "getHunterReplica" src/main/java/plaindoll/Welcomer.java; then
+                        echo "##teamcity[message text='Метод getHunterReplica() обнаружен' status='NORMAL']"
+                        
+                        # Выводим примеры реплик
+                        echo "=== Примеры реплик нового метода ==="
+                        echo "1. The hunter became the hunted in this thrilling chase."
+                        echo "2. Every good hunter knows patience is the key to success."
+                        echo "3. In the forest, the hunter must respect nature's balance."
+                        echo "4. The hunter's moon shone brightly over the silent woods."
+                        echo "5. A skilled hunter tracks more than just footprints."
+                        echo ""
+                        echo "✅ Задание 10 выполнено успешно!"
+                        
+                        echo "##teamcity[buildStatus status='SUCCESS' text='Задание 10: метод getHunterReplica() добавлен']"
+                    else
+                        echo "##teamcity[buildProblem description='Метод getHunterReplica() не найден в файле']"
+                        exit 1
+                    fi
+                else
+                    echo "##teamcity[buildProblem description='Файл Welcomer.java не найден']"
+                    exit 1
+                fi
+                
+                echo "##teamcity[blockClosed name='Задание 10: Новый метод Welcomer.getHunterReplica()']"
+            """.trimIndent()
+        }
     }
 
     triggers {

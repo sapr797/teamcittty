@@ -136,17 +136,6 @@ object Build2 : BuildType({
                 ls -la src/main/java/plaindoll/ 2>/dev/null || echo "Директория src/main/java/plaindoll/ не найдена"
             """.trimIndent()
         }
-        script {
-            name = "Diagnostics (1)"
-            id = "Diagnostics_1"
-            scriptContent = """
-                echo "=== ДИАГНОСТИКА ==="
-                echo "Текущая директория: ${'$'}(pwd)"
-                echo "Содержимое:"
-                ls -la
-                echo "POM файл существует: ${'$'}(test -f pom.xml && echo 'Да' || echo 'Нет')"
-            """.trimIndent()
-        }
         maven {
             id = "Maven2"
 

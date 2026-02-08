@@ -153,6 +153,9 @@ object Build2 : BuildType({
                 mvn exec:java -Dexec.mainClass="plaindoll.HunterDemo"
             """.trimIndent()
         }
+        maven {
+            id = "Maven2_1"
+        }
     }
 
     triggers {

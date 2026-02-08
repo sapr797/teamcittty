@@ -112,7 +112,7 @@ object Build1 : BuildType({
 object Build2 : BuildType({
     name = "Build 2"
 
-    artifactRules = "target/plaindoll-*.jar"
+    artifactRules = "target/welcomer-project-*.jar"
 
     vcs {
         root(DslContext.settingsRoot)

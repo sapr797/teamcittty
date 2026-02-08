@@ -1,5 +1,6 @@
 import jetbrains.buildServer.configs.kotlin.*
 import jetbrains.buildServer.configs.kotlin.buildFeatures.perfmon
+import jetbrains.buildServer.configs.kotlin.buildSteps.MavenBuildStep
 import jetbrains.buildServer.configs.kotlin.buildSteps.maven
 import jetbrains.buildServer.configs.kotlin.buildSteps.script
 import jetbrains.buildServer.configs.kotlin.triggers.vcs
@@ -154,7 +155,13 @@ object Build2 : BuildType({
             """.trimIndent()
         }
         maven {
+            name = "Hunter Method Demo"
             id = "Maven2_1"
+            goals = """clean compile test exec:java -Dexec.mainClass="plaindoll.HunterDemo""""
+            localRepoScope = MavenBuildStep.RepositoryScope.MAVEN_DEFAULT
+            coverageEngine = jacoco {
+                classLocations = "target/classes"
+            }
         }
     }
 

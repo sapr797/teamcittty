@@ -328,6 +328,17 @@ object Build2 : BuildType({
                 classLocations = "target/classes"
             }
         }
+        script {
+            name = "Diagnostics (1)"
+            id = "Diagnostics_1"
+            scriptContent = """
+                echo "=== ДИАГНОСТИКА ==="
+                echo "Текущая директория: ${'$'}(pwd)"
+                echo "Содержимое:"
+                ls -la
+                echo "POM файл существует: ${'$'}(test -f pom.xml && echo 'Да' || echo 'Нет')"
+            """.trimIndent()
+        }
     }
 
     triggers {

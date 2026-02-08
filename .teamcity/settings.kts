@@ -119,6 +119,23 @@ object Build2 : BuildType({
     }
 
     steps {
+        script {
+            name = "Diagnostics"
+            id = "Diagnostics"
+            scriptContent = """
+                echo "=== Диагностика структуры проекта ==="
+                echo "Текущая директория: ${'$'}(pwd)"
+                echo ""
+                echo "Содержимое проекта:"
+                ls -la
+                echo ""
+                echo "Поиск Java файлов:"
+                find . -name "*.java" -type f | head -20
+                echo ""
+                echo "Проверка plaindoll пакета:"
+                ls -la src/main/java/plaindoll/ 2>/dev/null || echo "Директория src/main/java/plaindoll/ не найдена"
+            """.trimIndent()
+        }
         maven {
             id = "Maven2"
 
@@ -165,23 +182,6 @@ object Build2 : BuildType({
             coverageEngine = jacoco {
                 classLocations = "target/classes"
             }
-        }
-        script {
-            name = "Diagnostics"
-            id = "Diagnostics"
-            scriptContent = """
-                echo "=== Диагностика структуры проекта ==="
-                echo "Текущая директория: ${'$'}(pwd)"
-                echo ""
-                echo "Содержимое проекта:"
-                ls -la
-                echo ""
-                echo "Поиск Java файлов:"
-                find . -name "*.java" -type f | head -20
-                echo ""
-                echo "Проверка plaindoll пакета:"
-                ls -la src/main/java/plaindoll/ 2>/dev/null || echo "Директория src/main/java/plaindoll/ не найдена"
-            """.trimIndent()
         }
         maven {
             name = "Zad10 - Hunter Method"

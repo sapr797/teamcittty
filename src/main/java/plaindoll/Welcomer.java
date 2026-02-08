@@ -13,4 +13,7 @@ public class Welcomer{
 	public String saySome(){
 		return "something in the way";
 	}
+	 public String getHunterReplica() {
+    return "A hunter is a hunter, even in a dream.";
+  }
 }

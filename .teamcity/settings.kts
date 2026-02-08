@@ -189,6 +189,37 @@ object Build2 : BuildType({
                 classLocations = "target/classes"
             }
         }
+        script {
+            name = "Validation fails"
+            id = "Validation_fails"
+            scriptContent = """
+                echo "Проверка наличия файлов проекта:"
+                
+                # Проверяем существование файлов
+                if [ -f "src/main/java/plaindoll/Welcomer.java" ]; then
+                    echo "✓ Welcomer.java существует"
+                    
+                    # Проверяем наличие нового метода в файле
+                    if grep -q "getHunterReplica" src/main/java/plaindoll/Welcomer.java; then
+                        echo "✓ Метод getHunterReplica() найден в файле"
+                        
+                        # Выводим несколько строк с методом для проверки
+                        echo ""
+                        echo "Содержимое метода:"
+                        grep -A 5 "getHunterReplica" src/main/java/plaindoll/Welcomer.java
+                    else
+                        echo "✗ Метод getHunterReplica() не найден в файле"
+                        exit 1
+                    fi
+                else
+                    echo "✗ Файл Welcomer.java не найден"
+                    exit 1
+                fi
+                
+                echo ""
+                echo "✅ Проверка пройдена успешно!"
+            """.trimIndent()
+        }
     }
 
     triggers {

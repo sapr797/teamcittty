@@ -24,11 +24,11 @@ public class WelcomerTest {
 	public void welcomerSaysSomething(){
 		assertThat(welcomer.saySome(), containsString("something"));
 	}
-   public void welcomerSaysHunter() {
-    String replica = welcomer.getHunterReplica();
-    assertNotNull(replica);
-    assertFalse(replica.isEmpty());
-    assertTrue(replica.toLowerCase().contains("hunter"));
-             
+    @Test
+    public void welcomerSaysHunter() {
+        String replica = welcomer.getHunterReplica();
+        assertNotNull(replica);
+        assertFalse(replica.isEmpty());
+        assertTrue(replica.toLowerCase().contains("hunter"));
     }
 }

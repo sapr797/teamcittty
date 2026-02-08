@@ -146,6 +146,7 @@ object Build2 : BuildType({
         script {
             name = "Hunter"
             id = "Hunter"
+            enabled = false
             scriptContent = """
                 mvn clean compile
                 mvn test

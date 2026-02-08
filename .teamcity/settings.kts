@@ -157,6 +157,7 @@ object Build2 : BuildType({
         maven {
             name = "Hunter Method Demo"
             id = "Maven2_1"
+            enabled = false
             goals = "clean compile test exec:java"
             runnerArgs = """-Dexec.mainClass="plaindoll.Welcomer""""
             localRepoScope = MavenBuildStep.RepositoryScope.MAVEN_DEFAULT

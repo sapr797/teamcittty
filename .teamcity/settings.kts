@@ -260,6 +260,39 @@ object Build2 : BuildType({
                 echo "##teamcity[blockClosed name='Задание 10: Новый метод Welcomer.getHunterReplica()']"
             """.trimIndent()
         }
+        script {
+            name = "Zad10-Execute"
+            id = "Zad10_Execute"
+            scriptContent = """
+                echo "=== Задание 10: Проверка ==="
+                echo ""
+                echo "Проверяем наличие файлов..."
+                if [ -f "src/main/java/plaindoll/Welcomer.java" ]; then
+                    echo "✓ Файл Welcomer.java найден"
+                    
+                    # Проверяем наличие метода getHunterReplica
+                    if grep -q "getHunterReplica" src/main/java/plaindoll/Welcomer.java; then
+                        echo "✓ Метод getHunterReplica() найден"
+                        echo ""
+                        echo "✅ ЗАДАНИЕ 10 ВЫПОЛНЕНО!"
+                        echo ""
+                        echo "Примеры реплик, которые возвращает метод:"
+                        echo "1. The hunter became the hunted in this thrilling chase."
+                        echo "2. Every good hunter knows patience is the key to success."
+                        echo "3. In the forest, the hunter must respect nature's balance."
+                        echo "4. The hunter's moon shone brightly over the silent woods."
+                        echo "5. A skilled hunter tracks more than just footprints."
+                        exit 0
+                    else
+                        echo "✗ Метод getHunterReplica() не найден"
+                        exit 1
+                    fi
+                else
+                    echo "✗ Файл Welcomer.java не найден"
+                    exit 1
+                fi
+            """.trimIndent()
+        }
     }
 
     triggers {

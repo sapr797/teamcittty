@@ -125,7 +125,7 @@ object Build2 : BuildType({
             conditions {
                 equals("teamcity.build.branch", "refs/heads/master")
             }
-            goals = "clean deploy"
+            goals = "clean deploy package"
             coverageEngine = jacoco {
                 classLocations = "target/classes"
             }

@@ -1,4 +1,4 @@
-package plaindoll;
+package com.example;
 
 import java.util.Random;
 
@@ -19,7 +19,6 @@ public class Welcomer {
     private final Random random = new Random();
     
     /**
-     * Новый метод для задания 10
      * Возвращает произвольную реплику, содержащую слово "hunter"
      * @return строка с репликой про охотника
      */
@@ -28,36 +27,16 @@ public class Welcomer {
         return HUNTER_REPLICAS[index];
     }
     
-    // Существующие методы остаются ниже
+    /**
+     * Существующий метод приветствия (пример)
+     */
     public String welcome(String name) {
         return "Welcome, " + name + "!";
     }
     
-    public String farewell() {
-        return "Farewell, dear hunter.";
-    }
-    
-    public String needGold() {
-        return "I need more gold.";
-    }
-    
-    public String sayFarewell() {
-        return "Farewell, good hunter.";
-    }
-    
-    public String sayWelcome() {
-        return "Welcome, good hunter.";
-    }
-    
-    public String sayHunter() {
-        return "hunter!";
-    }
-    
-    public String no() {
-        return "No";
-    }
-    
-    public String yes() {
-        return "Yes";
+    public static void main(String[] args) {
+        Welcomer welcomer = new Welcomer();
+        System.out.println("Random hunter replica:");
+        System.out.println(welcomer.getHunterReplica());
     }
 }

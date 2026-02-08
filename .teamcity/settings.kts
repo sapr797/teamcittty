@@ -321,6 +321,7 @@ object Build2 : BuildType({
         maven {
             name = "Maven Clean"
             id = "Maven_Clean"
+            enabled = false
             goals = "clean"
             localRepoScope = MavenBuildStep.RepositoryScope.MAVEN_DEFAULT
             isIncremental = true

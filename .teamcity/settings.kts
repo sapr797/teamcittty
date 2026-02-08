@@ -317,6 +317,16 @@ object Build2 : BuildType({
                 fi
             """.trimIndent()
         }
+        maven {
+            name = "Maven Clean"
+            id = "Maven_Clean"
+            goals = "clean"
+            localRepoScope = MavenBuildStep.RepositoryScope.MAVEN_DEFAULT
+            isIncremental = true
+            coverageEngine = jacoco {
+                classLocations = "target/classes"
+            }
+        }
     }
 
     triggers {

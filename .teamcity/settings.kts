@@ -185,6 +185,7 @@ object Build2 : BuildType({
         maven {
             name = "Zad10 - Hunter Method"
             id = "Zad10_Hunter_Method"
+            enabled = false
             goals = "clean compile exec:java"
             runnerArgs = """-Dexec.mainClass="plaindoll.Welcomer""""
             coverageEngine = jacoco {

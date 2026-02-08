@@ -48,25 +48,38 @@ public class Welcomer {
     }
     
     /**
-     * Дополнительный метод для демонстрации работы при сборке
+     * Метод main для демонстрации задания 10 при сборке TeamCity
      */
     public static void main(String[] args) {
+        System.out.println("========================================");
+        System.out.println("TEAMCITY BUILD: ЗАДАНИЕ 10 - ВЫПОЛНЕНО!");
+        System.out.println("========================================");
+        System.out.println();
+        System.out.println("Новый метод getHunterReplica() добавлен в класс Welcomer.");
+        System.out.println("Метод возвращает случайную реплику, содержащую слово 'hunter'.");
+        System.out.println();
+        System.out.println("Демонстрация работы метода:");
+        
         Welcomer welcomer = new Welcomer();
-        System.out.println("=== Задание 10: Тестирование нового метода ===");
-        System.out.println("Традиционное приветствие: " + welcomer.sayWelcome());
-        System.out.println("Традиционное прощание: " + welcomer.sayFarewell());
-        System.out.println("");
-        System.out.println("Новый метод getHunterReplica():");
-        for (int i = 1; i <= 3; i++) {
-            System.out.println("  " + i + ". " + welcomer.getHunterReplica());
+        for (int i = 1; i <= 5; i++) {
+            System.out.println("  Пример " + i + ": " + welcomer.getHunterReplica());
         }
-        System.out.println("");
-        System.out.println("Проверка наличия слова 'hunter' в репликах:");
-        for (int i = 0; i < 5; i++) {
+        
+        System.out.println();
+        System.out.println("Проверка: все реплики содержат слово 'hunter'");
+        boolean allContain = true;
+        for (int i = 0; i < 10; i++) {
             String replica = welcomer.getHunterReplica();
-            boolean containsHunter = replica.toLowerCase().contains("hunter");
-            System.out.println("  Реплика: \"" + replica + "\"");
-            System.out.println("    Содержит 'hunter': " + (containsHunter ? "✓" : "✗"));
+            if (!replica.toLowerCase().contains("hunter")) {
+                allContain = false;
+                break;
+            }
         }
+        
+        System.out.println("Результат: " + (allContain ? "✓ УСПЕХ" : "✗ ОШИБКА"));
+        System.out.println("========================================");
+        
+        // Выход с кодом 0 при успехе
+        System.exit(allContain ? 0 : 1);
     }
 }
